@@ -249,23 +249,45 @@ Use `gemini_chat` for iterative creative sessions:
 
 ## Prompt Inspiration (`/banana inspire`)
 
-If the user has the `prompt-engine` or `prompt-library` skill installed, use it
-to search 2,500+ curated prompts. Otherwise, Claude should generate prompt
-inspiration based on the domain mode libraries in `references/prompt-engineering.md`.
+Browse the local seed prompt library at `references/prompt_library.json` via
+`scripts/inspire.py`. It ships 38 curated prompts (2 per category across 19
+categories, spanning all 9 domain modes) -- a real, usable starting set, not
+the 2,500+ prompt database this section once claimed. Growing the library
+past this seed set is a roadmap item, not a current capability; do not tell
+the user it already has broader coverage than these 38 prompts.
 
-**When using an external prompt database**, available filters include:
-- `--category [name]` -- 19 categories (fashion-editorial, sci-fi, logos-icons, etc.)
-- `--model [name]` -- Filter by original model (adapt to Gemini)
-- `--type image` -- Image prompts only
-- `--random` -- Random inspiration
+```bash
+# List all categories with prompt counts
+python3 ${CLAUDE_SKILL_DIR}/scripts/inspire.py --list-categories
 
-**IMPORTANT:** Prompts from the database are optimized for Midjourney/DALL-E/etc.
-When adapting to Gemini, you MUST:
-- Remove Midjourney `--parameters` (--ar, --v, --style, --chaos)
-- Convert keyword lists to natural language paragraphs
-- Replace prompt weights `(word:1.5)` with descriptive emphasis
-- Add camera/lens specifications for photorealistic prompts
-- Expand terse tags into full scene descriptions
+# Browse a specific category
+python3 ${CLAUDE_SKILL_DIR}/scripts/inspire.py --category sci-fi
+
+# Filter by domain mode, limit results
+python3 ${CLAUDE_SKILL_DIR}/scripts/inspire.py --mode product --limit 3
+
+# Random inspiration
+python3 ${CLAUDE_SKILL_DIR}/scripts/inspire.py --random --limit 5
+
+# Filter by suggested model
+python3 ${CLAUDE_SKILL_DIR}/scripts/inspire.py --model gemini-3-pro-image-preview
+```
+
+Available filters: `--category [name]` (19 categories: fashion-editorial,
+sci-fi, logos-icons, product-photography, food-beverage, portrait-headshot,
+character-design, landscape-nature, urban-architecture, abstract-art,
+social-media-graphics, app-ui-illustration, infographic-dataviz,
+packaging-design, automotive, fantasy-concept-art, minimalist-lifestyle,
+vintage-retro, cinematic-storytelling), `--mode [name]` (cinema, product,
+portrait, editorial, ui-web, logo, landscape, abstract, infographic),
+`--model [name]` (substring match against the suggested model), `--random`,
+`--limit N`.
+
+Each entry already includes a Gemini-ready prompt plus a suggested `model`,
+`aspect_ratio`, and `image_size` -- present these to the user as a starting
+point, adjust to their specifics, and confirm before generating. If a filter
+combination matches nothing in the seed set, fall back to generating
+inspiration from the domain mode libraries in `references/prompt-engineering.md`.
 
 ## Batch Variations (`/banana batch`)
 
@@ -335,6 +357,7 @@ Load on-demand -- do NOT load all at startup:
 - `references/post-processing.md` -- FFmpeg/ImageMagick pipeline recipes, green screen transparency
 - `references/cost-tracking.md` -- Pricing table, usage guide, free tier limits
 - `references/presets.md` -- Brand preset schema, examples, merge behavior
+- `references/prompt_library.json` -- Seed prompt library queried by `scripts/inspire.py` (`/banana inspire`)
 
 ## Setup
 
