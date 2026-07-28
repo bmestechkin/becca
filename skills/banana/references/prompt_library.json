@@ -1,13 +1,13 @@
 {
-  "version": "0.2.0",
-  "note": "Seed prompt library for /banana inspire. Ships 2 curated prompts per category (40 total) as a real, usable starting set -- not the full 2,500+ referenced in SKILL.md. Expand by appending objects to `prompts` following the same schema; categories/modes below are the fixed vocab the filter script validates against.",
+  "version": "0.3.0",
+  "note": "Seed prompt library for /banana inspire. Ships 2 curated prompts per category (42 total) as a real, usable starting set -- not the full 2,500+ referenced in SKILL.md. Expand by appending objects to `prompts` following the same schema; categories/modes below are the fixed vocab the filter script validates against.",
   "modes": ["cinema", "product", "portrait", "editorial", "ui-web", "logo", "landscape", "abstract", "infographic"],
   "categories": [
     "fashion-editorial", "sci-fi", "logos-icons", "product-photography", "food-beverage",
     "portrait-headshot", "character-design", "landscape-nature", "urban-architecture",
     "abstract-art", "social-media-graphics", "app-ui-illustration", "infographic-dataviz",
     "packaging-design", "automotive", "fantasy-concept-art", "minimalist-lifestyle",
-    "vintage-retro", "cinematic-storytelling", "bedroom-interiors"
+    "vintage-retro", "cinematic-storytelling", "bedroom-interiors", "living-room-interiors"
   ],
   "prompts": [
     {
@@ -449,6 +449,28 @@
       "prompt": "A quiet bedroom corner styled for reading: a low wood-framed daybed with a single wool throw folded at the foot, positioned beside a floor-to-ceiling window dressed in a simple linen roman shade. A round rattan side table holds one ceramic mug and a small stack of books. Bare oak flooring transitions into a solid warm-clay wool rug beneath the daybed. Soft, indirect afternoon light, no overhead fixtures on, deliberate negative space on the walls. Captured with a Fujifilm GFX100, 45mm lens at f/4. Minimalist interior editorial photograph, calm and uncluttered.",
       "tags": ["bedroom", "minimalist", "reading-nook", "natural-light"],
       "aspect_ratio": "4:5",
+      "model": "gemini-3.1-flash-image-preview",
+      "image_size": "2K"
+    },
+    {
+      "id": "living-room-interiors-01",
+      "category": "living-room-interiors",
+      "mode": "editorial",
+      "title": "Wabi-sabi jewel-tone living room",
+      "prompt": "A living room furnished in a wabi-sabi style with vibrant jewel-tone accents: a substantial low sofa upholstered in warm oatmeal bouclé, layered with oxblood-red, deep-indigo, and chocolate-brown velvet pillows. A live-edge raw-wood coffee table sits atop a solid deep terracotta rug with a low-loop textured weave. A small woven fiber-art wall hanging with fringe, incorporating indigo, oxblood, and chocolate-brown fiber, hangs beside a sliding glass door. A hand-thrown ceramic lamp in a drippy indigo glaze sits on a rattan side table, beside a tall potted fiddle-leaf fig. Warm cream walls, natural light through sheer curtains. Captured with a Canon EOS R5, 24mm lens at f/5.6, soft afternoon light. Wallpaper* design editorial.",
+      "tags": ["living-room", "wabi-sabi", "jewel-tones", "natural-texture"],
+      "aspect_ratio": "3:4",
+      "model": "gemini-3.1-flash-image-preview",
+      "image_size": "2K"
+    },
+    {
+      "id": "living-room-interiors-02",
+      "category": "living-room-interiors",
+      "mode": "editorial",
+      "title": "Warm minimalist living room with reading corner",
+      "prompt": "A warm minimalist living room: a low linen-upholstered sofa in soft sand, a single chunky wool throw folded over one arm, facing a simple oak media console. A large jute rug anchors the seating area on light oak flooring. One oversized abstract canvas in muted rust and cream hangs above the sofa, generous negative space around it. A rattan accent chair sits in a sunlit corner beside a tall potted plant. Soft, indirect natural light, deliberately uncluttered styling. Captured with a Fujifilm GFX100, 32mm lens at f/5. Minimalist interior editorial photograph, calm and airy.",
+      "tags": ["living-room", "minimalist", "warm-neutral", "natural-light"],
+      "aspect_ratio": "3:4",
       "model": "gemini-3.1-flash-image-preview",
       "image_size": "2K"
     }

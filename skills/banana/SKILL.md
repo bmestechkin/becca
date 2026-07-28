@@ -250,11 +250,11 @@ Use `gemini_chat` for iterative creative sessions:
 ## Prompt Inspiration (`/banana inspire`)
 
 Browse the local seed prompt library at `references/prompt_library.json` via
-`scripts/inspire.py`. It ships 40 curated prompts (2 per category across 20
+`scripts/inspire.py`. It ships 42 curated prompts (2 per category across 21
 categories, spanning all 9 domain modes) -- a real, usable starting set, not
 the 2,500+ prompt database this section once claimed. Growing the library
 past this seed set is a roadmap item, not a current capability; do not tell
-the user it already has broader coverage than these 40 prompts.
+the user it already has broader coverage than these 42 prompts.
 
 ```bash
 # List all categories with prompt counts
@@ -273,12 +273,12 @@ python3 ${CLAUDE_SKILL_DIR}/scripts/inspire.py --random --limit 5
 python3 ${CLAUDE_SKILL_DIR}/scripts/inspire.py --model gemini-3-pro-image-preview
 ```
 
-Available filters: `--category [name]` (20 categories: fashion-editorial,
+Available filters: `--category [name]` (21 categories: fashion-editorial,
 sci-fi, logos-icons, product-photography, food-beverage, portrait-headshot,
 character-design, landscape-nature, urban-architecture, abstract-art,
 social-media-graphics, app-ui-illustration, infographic-dataviz,
 packaging-design, automotive, fantasy-concept-art, minimalist-lifestyle,
-vintage-retro, cinematic-storytelling, bedroom-interiors), `--mode [name]` (cinema, product,
+vintage-retro, cinematic-storytelling, bedroom-interiors, living-room-interiors), `--mode [name]` (cinema, product,
 portrait, editorial, ui-web, logo, landscape, abstract, infographic),
 `--model [name]` (substring match against the suggested model), `--random`,
 `--limit N`.
