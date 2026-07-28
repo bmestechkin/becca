@@ -24,6 +24,7 @@ def main() -> None:
     parser.add_argument("--prompt", required=True, help="Fully-crafted edit instruction")
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--resolution", default="2K", choices=sorted(RESOLUTION_TO_IMAGE_SIZE))
+    parser.add_argument("--aspect-ratio", default=None, help="e.g. 1:1, 16:9, 3:4 -- omit to keep the source image's framing")
     parser.add_argument("--output", default="edited.png", help="Path to save the edited image")
     args = parser.parse_args()
 
@@ -44,9 +45,13 @@ def main() -> None:
             ],
         }
     ]
+    image_config = {"imageSize": RESOLUTION_TO_IMAGE_SIZE[args.resolution]}
+    if args.aspect_ratio:
+        image_config["aspectRatio"] = args.aspect_ratio
+
     generation_config = {
         "responseModalities": ["IMAGE"],
-        "imageConfig": {"imageSize": RESOLUTION_TO_IMAGE_SIZE[args.resolution]},
+        "imageConfig": image_config,
     }
 
     response = call_generate_content(args.model, contents, generation_config)
